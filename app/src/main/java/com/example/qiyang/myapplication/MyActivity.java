@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.EditText;
 
 public class MyActivity extends AppCompatActivity {
@@ -41,8 +42,9 @@ public class MyActivity extends AppCompatActivity {
 
     public void sendMessage(View view){
         Intent intent = new Intent(this,DisplayMessageActivity.class);
-        EditText editText = (EditText) view.findViewById(R.id.xiakalaka);
-        intent.putExtra(EXTRA_MESSAGE,editText.getText());
+        EditText editText = (EditText) findViewById(R.id.xiakalaka);
+        ViewParent parent = view.getParent().getParent();
+        intent.putExtra(EXTRA_MESSAGE,editText.getText().toString());
         startActivity(intent);
     }
 }
